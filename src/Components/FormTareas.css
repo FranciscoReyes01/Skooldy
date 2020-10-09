@@ -1,0 +1,30 @@
+.oo
+{
+    display: flex;
+
+}
+
+.parrafo
+{   width: 10px;
+    margin-left: 8.5px;
+    margin-bottom: 0.2px;
+    
+}
+
+/*.parrafo:hover{
+    background: red;
+}*/
+
+
+.padre
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.hijo1{
+    width: 40%;
+}
+
+
+
