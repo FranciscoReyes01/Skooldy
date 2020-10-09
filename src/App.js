@@ -148,9 +148,9 @@ class App extends React.Component {
             <input onChange={this.WrittingCreating} name="2" placeholder="Apellidos..."></input>
             <input onChange={this.WrittingCreating} name="3" placeholder="Nacionalidad..."></input>
             <input onChange={this.WrittingCreating} name="4" placeholder="Nivel de estudios..."></input>
-            <input onChange ={this.WrittingCreating} name="5" type="hidden" value ={this.state.userName}placeholder="Correo electronico..."></input>
-            <input name="userName" onChange={this.WrittingLogin}></input>
-            <input  name="pass" onChange={this.WrittingLogin}></input>
+            <input onChange ={this.WrittingCreating} name="5" type="hidden" value ={this.state.userName}></input>
+            <input name="userName" placeholder="Correo electronico..." onChange={this.WrittingLogin}></input>
+            <input  name="pass" placeholder="Password..."  onChange={this.WrittingLogin}></input>
             
             <Link to="/Verificando"><button onClick={this.CreateUser}>Crear Cuenta</button></Link>
             
