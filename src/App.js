@@ -31,6 +31,7 @@ class App extends React.Component {
     this.queryJuego=null
     this.hola = null
     this.nombreClase=""
+    this.codigoClase =""
     
     this.state={
       user:null,
@@ -80,6 +81,12 @@ class App extends React.Component {
       if(this.idClase !== null)
       {
         this.idClase = e.key
+        //Linea 85 a 88 se genera el id de la clase que le maestro crea para despues darselo al alumno y as se incriba
+        this.GenerarCodigo(this.idClase)
+        this.addClase = firebase.database().ref().child(`Clases/${this.idClase}/id`)
+        this.addClase.set(this.codigoClase)
+        this.codigoClase=""
+
         this.addClase = firebase.database().ref().child(`ClasesCreadas/${this.idUserDB}/${this.idClase}`)
         this.addClase.set({hora:3434,fecha:34})
         this.addClase = firebase.database().ref().child(`Clases`)
@@ -195,7 +202,7 @@ class App extends React.Component {
       if(this.state.datosUsuarioActual.cuenta === "Alumno")
     {
       return(
-          <AppStudent nombreClase={this.nombreClase} nombresJuegos={this.state.nombresJuegos} juegosBuscados={this.state.juegosBuscados} WriteJuego={this.WriteJuego} BuscarJuego={this.BuscarJuego} ReiniciarValores={this.ReiniciarValores} tareasClase={this.state.tareasClase} idTarea={this.idTarea} TareaFinalizada={this.TareaFinalizada} ImprimirTablero={this.ImprimirTablero} CrearTablero={this.CrearTablero} ActualizarEst={this.ActualizarEst} tareaHacer={this.state.tareaHacer}  ConsultarTarea={this.ConsultarTarea} tareasPendientes={this.state.tareasPendientes}  clases={this.state.clases} idUser={this.idUserDB} ConsultaRelacional={this.ConsultaRelacional} GetOut={this.GetOut} ConsultarCodigo={this.ConsultarCodigo}></AppStudent>
+          <AppStudent JuegosPorEdad={this.JuegosPorEdad} nombreClase={this.nombreClase} nombresJuegos={this.state.nombresJuegos} juegosBuscados={this.state.juegosBuscados} WriteJuego={this.WriteJuego} BuscarJuego={this.BuscarJuego} ReiniciarValores={this.ReiniciarValores} tareasClase={this.state.tareasClase} idTarea={this.idTarea} TareaFinalizada={this.TareaFinalizada} ImprimirTablero={this.ImprimirTablero} CrearTablero={this.CrearTablero} ActualizarEst={this.ActualizarEst} tareaHacer={this.state.tareaHacer}  ConsultarTarea={this.ConsultarTarea} tareasPendientes={this.state.tareasPendientes}  clases={this.state.clases} idUser={this.idUserDB} ConsultaRelacional={this.ConsultaRelacional} GetOut={this.GetOut} ConsultarCodigo={this.ConsultarCodigo}></AppStudent>
       )
     }
     else{
@@ -302,9 +309,52 @@ class App extends React.Component {
   {
     this.idClase = "lista"
     this.addClase.push().set({nombre:nomb,descripcion:desc})
-    
-    console.log(this.idUserDB)
   }
+
+  GenerarCodigo(keyObtenida)
+  {
+    //Se inicializa en 2 para que inserte un valor en  la primera vuelta del for
+    let contGenerar =2
+    let contChar= 0
+
+    //For para recorrer la key de la tarea creada
+    for(let i =1;i<20;i++)
+    {
+      //contGenerar variable que cuenta posiciones en general 
+      if(contGenerar ==2)
+      {
+        //contChar variable que cuenta cuando ya se hallan almacenado las 2 posicones
+        if(contChar ==2)
+        {
+          contGenerar=1
+          contChar=0
+        }
+        else
+        {
+          //Acumulamos los caracteres para ir creando el id de la tarea
+          this.codigoClase+=keyObtenida[i]
+          //Esto sucede en la primera ejecucion del for ya que solo tomara un caracter
+          if(i==1)
+          {
+            contChar=0
+            contGenerar=0;
+          }
+          else
+          {
+            contChar++
+          }
+          
+        }
+      }
+      else
+      {
+        contGenerar++;
+      }
+    }
+
+    console.log(this.codigoClase)
+  }
+
 
  
   CrearTarea=(tem,subTem,nombAct,instruc,pos,words,tipoAct,up,idClase)=>
@@ -701,6 +751,42 @@ ImprimirTablero=(tab,ValidarPosicion,letrasColor,ClickLetras)=>
           })
         })
       })
+    }
+
+    JuegosPorEdad=(tipoJuego)=>
+    {
+      //Array para almacenar los juegos 
+      let arrayJuegos=[]
+      var num = 0 
+      
+      /*Se consultan las tareas de acuerdo a su propiedad edad que es la misma que la
+      la edad del alumno que este usasno la app*/
+      this.queryJuego = firebase.database().ref().child("/Tareas").orderByChild("edad").equalTo(15)
+      this.queryJuego.on("value",p=>{
+        console.log(p.toJSON())
+        Object.keys(p.toJSON()).forEach(k=>{
+
+          if(tipoJuego == p.toJSON()[k].tipo)
+          {
+              arrayJuegos.push({tema:p.toJSON()[k].tema,subtema:p.toJSON()[k].subtema,
+              nombre:p.toJSON()[k].nombre,instrucciones:p.toJSON()[k].instrucciones,
+            palabras:p.toJSON()[k].palabras,posiciones:p.toJSON()[k].posiciones,
+            tipo:p.toJSON()[k].tipo,vidas:p.toJSON()[k].vidas,key:k})
+          }
+
+        })
+      })
+      console.log(arrayJuegos)
+      //Se genera un numero aleatorio de entre la longitud de las tareas encontradas
+
+      num =Math.floor((Math.random() * (arrayJuegos.length-1)) + 1);
+      this.idTarea = arrayJuegos[num].key
+      console.log(this.idTarea)
+      console.log(arrayJuegos[num])
+
+      /*Se hace referencia a una tarea del array y se le asigna a una variable 
+      de estado que almacenara la informacion del juego que jugara el alumno*/
+      this.setState({tareaHacer:arrayJuegos[num]})
     }
 }
 

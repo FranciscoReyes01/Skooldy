@@ -3,6 +3,8 @@ import {BrowserRouter as Router,Link,Redirect,Route} from 'react-router-dom'
 import Pizarron from './Pizarron.js';
 import PacmanGame from './PacmanGame.js'
 import SopaGame from './SopaGame.js'
+import ScreenShot_P from '../Imagenes/PacmanScreen.png'
+import ScreenShot_S from '../Imagenes/SopaScreen.png'
 
 export default class AppStudent extends Component
 {
@@ -11,6 +13,11 @@ export default class AppStudent extends Component
         this.code =""
         this.tareaBuscada =""
         this.keyTarea =""
+        this.tipoJuego="Pacman"
+        this.state={
+            juego:ScreenShot_P
+            
+        }
     }
 
     render()
@@ -51,7 +58,24 @@ export default class AppStudent extends Component
                     
 
 
-                    <Route path="/Jugar"></Route>
+                    <Route path="/Jugar">
+                        
+                        <div>
+                            
+                            <img width="1000" height="500" src={this.state.juego}></img>
+                            <button onClick={()=>{this.props.JuegosPorEdad(this.tipoJuego)}}>Jugar</button>
+                        </div>
+                        
+                        <p onClick={()=>{
+                            this.tipoJuego="Pacman"
+                            this.setState({juego:ScreenShot_P})
+                            }}>1</p>
+                        <p onClick={()=>{
+                            this.tipoJuego="Sopa"
+                            this.setState({juego:ScreenShot_S})
+                            }}>2</p>
+                        <p>3</p>
+                    </Route>
 
                     <Route path="/Ranking"></Route>
                     <Route path="/Inscribirme">
@@ -200,4 +224,5 @@ export default class AppStudent extends Component
             
         }
     }
+
 }
