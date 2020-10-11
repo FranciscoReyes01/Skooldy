@@ -255,8 +255,13 @@ class App extends React.Component {
 
       /*Una vez creado el usuario, creamos un ruta en la BD para este*/ 
       this.addUser=firebase.database().ref().child(`${newUserInfo[0]}`)
-      /*e inmeditamente insertamos la informacion dl usuario creado*/ 
-      this.addUser.push().set({
+
+      /*Condicion necesaria para porque en alumnos los datos que se tienen que almacenar en la BD
+      son diferentes*/ 
+      if(newUserInfo[0] =="Docente")
+      {
+         /*e inmeditamente insertamos la informacion dl usuario creado*/ 
+        this.addUser.push().set({
         /*newUserInfo variable que obtiene valores al escribir en el fiormulario 
         de crear usuario*/
         cuenta:newUserInfo[0],
@@ -267,7 +272,32 @@ class App extends React.Component {
         /*Es importante almacenar el uid porque de esa forma podemos vincular los
          datos del usurio creado con su respectivo nodo en la BD*/
         uid:e.user.uid
+        
       })
+      }
+      else
+      {
+        if(newUserInfo[0] =="Alumno")
+        {
+          this.addUser.push().set({
+            /*newUserInfo variable que obtiene valores al escribir en el fiormulario 
+            de crear usuario*/
+            cuenta:newUserInfo[0],
+            nombre:newUserInfo[1],
+            apellidos:newUserInfo[2],
+            nacionalidad:newUserInfo[3],
+            estudios:newUserInfo[4],
+            estrellas:0,
+            juegosJugados:0,
+            promedio:0,  
+            /*Es importante almacenar el uid porque de esa forma podemos vincular los
+             datos del usurio creado con su respectivo nodo en la BD*/
+            uid:e.user.uid
+            
+          })
+        }
+      }
+     
       
     })
     .catch(f=>{console.log(`Error al crear usuario: ${f.code}`)})
@@ -343,7 +373,6 @@ class App extends React.Component {
           {
             contChar++
           }
-          
         }
       }
       else

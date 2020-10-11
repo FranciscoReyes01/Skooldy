@@ -15,7 +15,8 @@ export default class AppStudent extends Component
         this.keyTarea =""
         this.tipoJuego="Pacman"
         this.state={
-            juego:ScreenShot_P
+            juego:ScreenShot_P,
+            juegoLibre:false
             
         }
     }
@@ -63,7 +64,10 @@ export default class AppStudent extends Component
                         <div>
                             
                             <img width="1000" height="500" src={this.state.juego}></img>
-                            <button onClick={()=>{this.props.JuegosPorEdad(this.tipoJuego)}}>Jugar</button>
+                            <button onClick={()=>{
+                                this.setState({juegoLibre:true})
+                                this.props.JuegosPorEdad(this.tipoJuego)
+                                }}>Jugar</button>
                         </div>
                         
                         <p onClick={()=>{
@@ -218,7 +222,7 @@ export default class AppStudent extends Component
             if(this.props.tareaHacer.tipo =="Sopa")
             {
                 return(
-                    <SopaGame nombreClase={this.props.nombreClase} idTarea ={this.props.idTarea} TareaFinalizada={this.props.TareaFinalizada} ImprimirTablero={this.props.ImprimirTablero} CrearTablero={this.props.CrearTablero} tareaHacer={this.props.tareaHacer} ></SopaGame>
+                    <SopaGame juegoLibre={this.state.juegoLibre} nombreClase={this.props.nombreClase} idTarea ={this.props.idTarea} TareaFinalizada={this.props.TareaFinalizada} ImprimirTablero={this.props.ImprimirTablero} CrearTablero={this.props.CrearTablero} tareaHacer={this.props.tareaHacer} ></SopaGame>
                 )
             }
             

@@ -352,9 +352,24 @@ export default class SopaGame extends Component {
             console.log("Juego terminado")
             console.log(`Aciertos: ${this.state.score}`)
             console.log(`Errores: ${this.state.contMal}`)
-            calif =(this.state.score*10)/cantPalabras
-            console.log("Tu calificacion es: "+calif)
-            this.props.TareaFinalizada(this.props.idTarea,calif)
+
+            /*Variable rellenada desde AppStudent, el condicional indica si el juego que se esta jugando
+            es una actividad de clase o el uausrio esta jugando en modo libre*/
+            if(this.props.juegoLibre == false)
+            {
+                calif =(this.state.score*10)/cantPalabras
+                console.log("Tu calificacion es: "+calif)
+                this.props.TareaFinalizada(this.props.idTarea,calif)
+            }
+            else
+            {
+                if(this.props.juegoLibre == true)
+                {
+                    
+                }
+            }
+   
+  
         }
     }
 
