@@ -20,11 +20,28 @@
 {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    margin-top: 1em;
 }
 
 .hijo1{
-    width: 40%;
+    width: 48%;
+   
+    background:#424141;
+    padding:0.5em;
+    margin-left: 1%;
+    border-radius:0.5em;
 }
+
+
+.hijo2{
+    width: 48%;
+    background:#424141;
+    padding:0.5em;
+    border-radius:0.5em;
+    margin-right: 1%;
+}
+
 
 
 

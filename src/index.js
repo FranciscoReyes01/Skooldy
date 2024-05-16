@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import firebase from 'firebase'
+import firebase, { app } from 'firebase'
+import PlataformasGame from './Components/PlataformasGame';
+import Hola from './Components/ContentInst.js'
+
 
 firebase.initializeApp({
   apiKey: "AIzaSyBH0SH_zHJ-d7ax2YBn4NNMXdg92o6Vm3g",
@@ -17,7 +20,8 @@ firebase.initializeApp({
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+
+    <App></App>
   </React.StrictMode>,
   document.getElementById('root')
 );

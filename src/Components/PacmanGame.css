@@ -1,0 +1,12 @@
+.contenedor{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: 50px auto;
+}
+
+.player{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+}

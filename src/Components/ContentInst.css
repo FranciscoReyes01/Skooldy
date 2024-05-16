@@ -1,0 +1,74 @@
+.info-actividad
+{
+  display: none;
+}
+
+@media screen and (min-width: 769px) 
+{
+    .info-actividad
+    {
+        width: 22.5%;
+        overflow: auto;
+        display: block;
+        height: 65%;
+    }
+
+
+    .info-actividad__maestro
+    {    
+        margin: 0 auto;
+        display: block;
+        margin-bottom:2em ;
+        width: 7em;
+        height: 7em;
+        border-radius: 4em;
+    }
+
+    .info-actividad__actividad
+    {
+        width: 100%;
+        margin-bottom: 1.5em;
+    }
+
+    .texto-actividad
+    {
+        color: white;
+        font-size: 1.1em;
+    }
+
+    .texto-actividad--clase::before 
+    {
+        content: "Clase: ";
+        font-weight: 600;
+    }
+
+    .texto-actividad--tema::before 
+    {
+        content: "Tema: ";
+        font-weight: 600;
+    }
+
+    .texto-actividad--inst::before 
+    {
+        content: "Instrucciones: ";
+        font-weight: 600;
+    }
+}
+
+@media (min-width: 1025px)  and (max-width: 1200px)
+{
+    .info-actividad
+    {
+      width: 19%;
+      height: 65%;
+    }
+}
+
+@media screen and (min-width:1201px)
+{
+    .info-actividad
+    {
+      width: 17%;
+      height: 65%;
+    }
+}

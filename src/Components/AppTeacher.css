@@ -1,0 +1,787 @@
+*{
+  margin:0;
+  padding: 0;
+  color: black;
+  font-family: "Roboto",sans-serif;
+}
+
+
+
+
+.main-menu--teacher
+{
+  grid-template-areas:"titulo      titulo" 
+                      "newClase    clases"
+                      "perfil      newAct";
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: auto,repeat(3,1fr);
+
+}
+
+.link-modulo--newClase
+{
+    grid-column:newClase;
+    grid-row: newClase;
+}
+
+
+
+.link-modulo--clases
+{
+    grid-column:clases;
+    grid-row: clases;
+}
+
+.link-modulo--perfil
+{
+    grid-column:perfil;
+    grid-row: perfil;
+}
+
+.link-modulo--newAct
+{
+    grid-column:newAct;
+    grid-row: newAct;
+}
+
+.link-modulo--pacman
+{
+  grid-column:pacman;
+  grid-row: pacman;
+}
+
+
+.link-modulo--num
+{
+  grid-column:numeros;
+  grid-row: numeros;
+}
+
+
+.link-modulo--sopa
+{
+  grid-column:sopa;
+  grid-row: sopa;
+}
+
+
+.link-modulo--conj
+{
+  grid-column:conjuntos;
+  grid-row: conjuntos;
+}
+
+.link-modulo--plat
+{
+  grid-column:plat;
+  grid-row: plat;
+}
+
+
+
+.titulo-modulo--newClase
+{
+  width: 25em;
+  height: 15em;
+}
+
+
+.login-form-input--nameClase
+{
+  width: 85vw;
+  height: 6.5vh;
+  margin-bottom:3vh ;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.login-form-input--descClase
+{
+  width: 85vw;
+  height: 35vh;
+  text-align: center;
+  font-size: 1.5em;
+
+}
+.login-form-input--descClase:focus {
+  outline: none !important;
+  border:0.2em solid #B8ADFE;
+}
+
+.login-form-input--nameClase:focus {
+  outline: none !important;
+  border:0.2em solid #B8ADFE;
+}
+
+
+
+.inputs-clase
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 9.5px;
+}
+
+.buttons--app-techaer
+{
+  width: 16em;
+  height: 3em;
+  font-size: 1.4em;
+  margin-top:1vh ;
+}
+
+.header-table
+{
+  background: #FF4B7C;
+  width: 100%;
+  padding: 4%;
+  margin: 0 auto;
+  margin-bottom: 1.5em;
+  color: white;
+  border-radius: 0.5em;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+
+.table-clases
+{
+  width: 95vw;
+  height: 75%;
+  overflow: auto;
+  padding: 4%;
+  border-radius: 1em;
+  background:white;
+}
+
+
+.item-clase:hover
+{
+  background-color: rgba(211, 211, 211, 0.555);
+}
+
+
+
+.item-clase__linea
+{
+ /*  border: 0.008em solid #E0DFDF; */
+  height: 0.1em;
+  width: 90%;
+  background: #E0DFDF;
+  margin: 0 auto;
+}
+
+.info-item
+{
+  color: #C0C0C0;
+  margin: 0;
+}
+
+.info-item--big
+{
+  font-size: 1.5em;
+}
+
+
+.info-item--small
+{
+  font-size: 1.3em;
+}
+
+
+.contenedor-lista
+{
+  width: 100%;
+  height: 100%;
+
+}
+
+.lista-alumnos
+{
+  display:grid;
+  justify-items: center;
+  gap:1em;
+  overflow: auto;
+  width: 100%;
+  padding: 1em 0;
+
+
+}
+
+.lista-tareas
+{
+  display:grid;
+  justify-items: center;
+  justify-content: start;
+  gap:1em;
+  grid-template-columns: repeat(3,1fr);
+  overflow: auto;
+  padding: 4% 0;
+}
+.lista-alumnos-textHeader
+{
+  font-size: 1.6em;
+  color: #a5a4a4;
+}
+
+
+
+.lista-alumnos-text
+{
+  font-size: 1.3em;
+  color: #a5a4a4;
+}
+
+.lista-tareas_titulo
+{
+
+  background: #F1F1F1;
+  width: 100%;
+  height: 100%;
+  grid-row: y11;
+  grid-column-start:y11;
+  grid-column-end: y13;
+}
+
+.tareas-asignadas{
+  text-align: center;
+  margin: auto 0 ;
+}
+
+.lista-tareas_tarea
+{
+  grid-area: y21;
+}
+
+
+.lista-tareas_fecha
+{
+  grid-area: y22;
+}
+
+.lista-tareas_hora
+{
+  grid-area: y23;
+}
+
+.menu-menu--act
+{
+  grid-template-areas:"titulo      titulo" 
+                      "pacman      numeros"
+                      "sopa        conjuntos"
+                      "plat        plat";
+}
+
+
+.modulo--form
+{
+  justify-content: flex-start;
+  padding: 2%;
+  background:none;
+}
+
+.content-form
+{
+  overflow: auto;
+  width: 100%;
+  background-color: rgba(60,57,57,0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+}
+
+.content-form_header
+{
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nombre-juego
+{
+  margin: auto 0;
+  color: white;
+  font-size: 1.3em;
+  font-weight: 550;
+}
+
+
+
+.inputs-form
+{
+  width: 15em;
+  height: 2.3em;
+  border-radius: 0.6em;
+  border: none;
+  font-size: 1.2em;
+  color: #898989;
+  border: 0.1em solid #E0DFDF;
+}
+
+.inputs-form:focus {
+  outline: none !important;
+  border:0.2em solid #B8ADFE;
+}
+
+
+.inputs-form--inciso-correcto
+{
+  width: 7em;
+}
+
+.inputs-form--number
+{
+  width: 6em;
+}
+
+.content-inline
+{
+  display: flex;
+  margin-bottom: 1em;
+}
+
+
+.content-inline_text
+{
+  color: white;
+  font-size: 1.5em;
+  margin: auto 0.5em auto 0;
+}
+
+.buttons--form
+{
+  width: 6em;
+  height: 2em;
+  border-radius: 0.6em;
+  margin: 0;
+  margin-left: 0.6em;
+}
+
+.content-butt-header
+{
+  display: flex;
+}
+.buttons-header
+{
+  width: 2.5em;
+  height: 2.5em;
+  background: #da3d67;
+  border-radius: 3em;
+  border: none;
+  display: flex;
+  justify-content: center;
+  margin: 0 0.3em;
+  
+}
+
+.icon-form{
+  width: 1.5em;
+  height: 1.5em;
+  align-self: center;
+}
+
+.buttons--play
+{
+  width: 3.5em;
+  height: 2em;
+  border-radius: 0.6em;
+
+  margin: 0;
+  margin-left: 0.6em;
+}
+
+.content-dinamic-izq
+{
+  width: 100%;
+  margin: auto;
+  padding: 1.3em;
+  background: rgba(60,57,57,0.5);
+}
+
+
+
+.content-form-izq
+{
+  width: 100%;
+  
+}
+
+
+
+
+.buttons-dijitos
+{
+  width: 5.3em;
+  border-radius: 1em;
+  height: 1.7em;
+  margin: 0 0.5em 0 0;
+}
+
+.buttons-crear-tar
+{
+  width: 8.5em;
+  border-radius: 1em;
+  height: 2.5em;
+  margin: 1em auto;
+}
+
+.content-buttons-num
+{
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1.5em;
+}
+
+.inputs-numeros
+{
+  width: 4.5em;
+  height: 4em;
+  border: none;
+  border-radius: 1em;
+  margin: 0 1em 0 0;
+}
+
+.content-dinamic-izq--num
+{
+  overflow: auto;
+}
+
+.signo-igual
+{
+  color: white;
+  font-size: 3em;
+  font-weight: 500;
+  margin: 0 0.5em 0 0;
+}
+
+
+.inputs-defecto-form
+{
+  height: auto;
+  margin-bottom: 0.5em;
+}
+
+
+.content-operaciones
+{
+  margin: 1.5em 0;
+}
+
+.boton-quitar
+{
+  border-radius: 5em;
+  width: 2em;
+  height: 2em;
+  color: #707070;
+  background: #ADADAD;
+  border: none;
+}
+
+.text-opera
+{
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
+
+
+.content-dinamic-der
+{
+  display:flex;
+  flex-direction:column;
+  width: 100%;
+  height: auto;
+  padding: 1.3em;
+  margin: 1em 0 0 0 ;
+  background: rgba(60,57,57,0.5);
+
+}
+
+.cajas
+{
+  margin-top:1.5em;
+  padding: 1em;
+  background: rgba(100, 99, 99, 0.4);
+  border-radius: 0.5em;
+}
+
+
+
+.input-vel
+{
+  border-radius: 0.5em;
+  text-align: center;
+}
+
+.content-num-resp-conj
+{
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.content-alien-resp
+{
+  margin-top:1em;
+  display:flex;
+  align-items:center;
+}
+
+
+.buttons-crear-tar-sopa{
+  padding: 0.5em 0;
+} 
+@media (min-width: 481px) and (max-width: 768px) 
+{
+
+  @media (min-width: 540px) and (max-width: 768px) 
+  {
+    .main-menu--teacher
+    {
+      grid-template-columns: repeat(3,25%);
+      grid-template-rows: 25% repeat(2,37.5%);
+      grid-template-areas: "titulo      titulo        titulo"
+                           "newClase    clases        perfil"
+                           "newAct       newAct        newAct";
+
+
+    }
+
+
+    .menu-menu--act
+    {
+      grid-template-areas:"titulo      titulo   titulo" 
+                          "pacman      numeros  sopa"
+                          "plat        hola     conjuntos";
+    }
+  }
+
+  .inputs-clase
+  {
+    font-size: 12px;
+  }
+
+
+  
+  .login-form-input--nameClase
+  {
+    width: 70vw;
+  }
+
+  .login-form-input--descClase
+  {
+    width: 70vw;
+  }
+
+
+
+  
+.buttons--app-techaer
+{
+  width: 14em;
+  height: 2.5em;
+  font-size: 1.4em;
+  margin-top:1vh ;
+}
+
+
+
+
+
+
+
+}
+
+
+@media screen and (min-width: 769px) 
+{ 
+  .content-inline_text
+{
+  color: white;
+  font-size: 1.5em;
+  /*margin: 0;*/
+}
+
+
+  .content-form-izq
+{
+  width: 50%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  background: rgba(60,57,57,0.5);
+
+
+}
+  .inputs-defecto-form
+  {
+    margin-bottom: 3em;
+  }
+
+  .main-menu--teacher
+  {
+   
+    grid-template-columns: repeat(4,22%);
+    grid-template-rows: 25% 30.5% 14% 30.5%;
+    grid-template-areas: "titulo      titulo    titulo      titulo"
+                         "hola        hola      hola        hola"
+                         "newClase    clases    perfil      newAct"      
+                         "buscar      buscar    calif       calif";
+
+
+  }
+
+
+  .menu-menu--act
+  {
+    grid-template-areas:"titulo      titulo     titulo     titulo"
+                        "pacman      numeros    sopa       plat"
+                        "hola        hola       hola       hola" 
+                        "conjuntos   conjuntos  conjuntos  conjuntos";
+  }
+
+
+  .login-form-input--nameClase
+  {
+    width: 55vw;
+  }
+
+  .login-form-input--descClase
+  {
+    width: 55vw;
+  }
+
+
+
+  .buttons--app-techaer
+  {
+    width: 14em;
+    height: 2.5em;
+
+  }
+
+
+
+  .table-clases
+  {
+    width: 85vw;
+    padding: 2%;
+  }
+
+
+  .content-form
+  {
+    flex-direction: row;
+    /*justify-content: space-evenly;*/
+    overflow: auto;
+    height: 90vh;
+    padding: 2em;
+    background: rgba(60,57,57,0.5);
+
+
+  }
+
+  .content-dinamic-izq
+  {
+    overflow: auto;
+    height: 30vh;
+    margin: 0;
+    background: none;
+
+  }
+
+
+  .content-dinamic-der
+  {
+    width: 50%;
+    margin: 0;
+    overflow: auto;
+    height: 70%;
+
+  }
+  
+
+}
+
+@media  (min-width: 769px) and (max-width: 1024px) 
+{
+
+  .content-form-izq
+{
+  height: 100%;
+}
+
+
+.content-dinamic-der
+{
+  height: 100%;
+
+}
+  
+  .header-table
+  {
+
+    padding: 2.5%;
+    
+
+  }
+
+  .buttons--app-techaer
+  {
+    width: 14em;
+    height: 3em;
+
+  }
+
+  
+}
+
+@media (min-width: 1205px) 
+{
+  .buttons--app-techaer
+  {
+    width: 14em;
+    height: 3em;
+
+  }
+
+  .content-form-izq
+{
+  height: 100%;
+
+
+
+}
+.content-dinamic-der
+{
+  height: 100%;
+
+}
+
+  .header-table
+  {
+
+    padding: 1.5%;
+
+  }
+
+
+  .table-clases
+  {
+    width: 80vw;
+    height: 80%;
+    padding: 1.3%;
+  }
+
+  .content-dinamic-izq
+  {
+    height: 55%;
+  }
+ 
+  .input-vel
+  {
+    border-radius: 0.4em;
+  }
+
+}

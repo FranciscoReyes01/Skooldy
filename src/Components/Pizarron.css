@@ -1,0 +1,100 @@
+.pizarron
+{
+    width: 90%;
+    height:80%;
+    border: 1.6em solid #FFF070;
+    border-radius: 2em;
+    background-color: #27E497;
+    overflow:auto;
+}
+
+
+.pizarron-item
+{
+    background: #20bb7d;
+    width: 90%;
+    margin: 1em auto;
+    height: 5.5em;
+    border-radius: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.pizarron-item:hover
+{
+    background: #199b67;
+}
+
+.item-text
+{
+    color: white;
+    font-size: 1.5em;
+    margin: auto 0.8em;
+}
+
+.pizarron-item__info
+{
+    width: 2.7em;
+    height: 2.7em;
+    margin-right: 0.8em;
+    display: none;
+}
+
+
+.custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-family: arial;
+}
+
+/* Modificador para dar la imagen de checkbox */
+.custom-checkbox__show--checkbox {
+    background-image: url('../img/Clases/checkbox-uncheck.svg');
+}
+
+/* Oculta input original */
+.custom-checkbox > .custom-checkbox__input {
+    display: none;
+}
+
+/* Radio personalizado usando <span> */
+.custom-checkbox > .custom-checkbox__show {
+    display: inline-block;
+    width: 2.2em;
+    height: 2.2em;
+    margin-right: 1em;
+    background-size: cover;
+    
+}
+
+/* Cambia el checkbox personalizado cuando es pulsado */
+.custom-checkbox > .custom-checkbox__input:checked + .custom-checkbox__show--checkbox {
+    background-image: url('../img/Clases/checkbox-check.svg');
+}
+
+.custom-checkbox__text
+{
+    font-size: 1.7em;
+    color:#B5B5B5;
+}
+
+
+@media (min-width: 1025px) 
+{
+    
+    .pizarron
+    {
+        width: 78%;
+        height:80%;
+    }
+
+    .pizarron-item
+    {
+        width: 98%;
+    }
+
+
+}
