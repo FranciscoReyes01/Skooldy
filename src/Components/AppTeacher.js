@@ -51,6 +51,17 @@ export default class AppTeacher extends Component {
 
 
   }
+
+componentDidMount(){
+  console.log("DID MOUNT");
+
+  window.addEventListener("popstate",(e)=>{
+    console.log("HOLIIIIIIIIIIII") 
+    this.CambiarFondo("#FFFFFF")
+  })
+
+}
+
   render() {
     return (
       <div className="content-app" style={{ background: `${this.state.fondo}` }}>
@@ -356,6 +367,7 @@ export default class AppTeacher extends Component {
 
 
   CambiarFondo = (color) => {
+    console.log("CAMBIAR FONDO")
     this.setState({ fondo: color })
   }
 

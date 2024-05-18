@@ -51,7 +51,9 @@ export default class Header extends Component {
 
 
 
-                <button className="buttons buttons--GetOut" onClick={(e) => { this.props.GetOut() }}>Cerrar sesion</button>
+                <button className="buttons buttons--GetOut" onClick={(e) => { 
+                    
+                    this.props.GetOut() }}>Cerrar sesion</button>
             
                 {/* {this.BotonBack()} 
                  */}

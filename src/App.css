@@ -184,8 +184,16 @@ img{
 }
 
 
+
 .buttons:hover{
   background: #2fce79;
+  border: none;
+}
+
+
+.buttons--GetOut:hover{
+  background: #f34775;
+
   border: none;
 }
 
@@ -483,6 +491,10 @@ img{
   padding: 0.83em 0.4em;
 }
 
+.footer__contacto{
+  width: 50%;
+}
+
 
 .footer__titulo
 {
@@ -502,6 +514,8 @@ img{
 {
   font-size: 0.8em;
   margin-bottom: 0.4em;
+  display: flex;
+  
 }
 
 
@@ -575,6 +589,11 @@ img{
   color: #B4B4B4;
   border: 0.1em solid #E0DFDF;
   text-align: center;
+}
+
+.login-form-input--new-user{
+  border-radius: 1em;
+
 }
 
 
@@ -663,6 +682,10 @@ img{
   font-size: 1.4em;
 }
 
+
+.login-create-new{
+
+}
 
 
 
@@ -806,6 +829,8 @@ img{
     margin: 0.5em 0;
   }
 
+
+
 }
 
 
@@ -829,7 +854,7 @@ Small screens, laptops */
     border: 2px solid #D4D4D4;
     border-radius: 1.7em;
     margin: 0;
-    width: 40%;
+    width: 65%;
     height: 80%;
     margin-bottom: 1.7em;
   }
@@ -849,8 +874,20 @@ Small screens, laptops */
     height: 12em;
     border-radius:10em;
   }
-}
+  
+  .layout__logo
+  {
+    width:18em;
+    height:18em;
+  } 
 
+  
+  .buttons
+  {
+    font-size: 1.5em;
+  
+  }
+}
 /* Desktops, large screens */
 @media (min-width: 1025px)  and (max-width: 1200px)
 {
@@ -1123,6 +1160,15 @@ Small screens, laptops */
 
   html{
     font-size: 20px;
+  }
+
+  .login-form-input--new-user{
+    border-radius: 0.5em;
+  
+  }
+
+  .login-create-new{
+    height: 90%;
   }
 }
 

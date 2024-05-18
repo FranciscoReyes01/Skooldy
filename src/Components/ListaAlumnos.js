@@ -8,6 +8,21 @@ export default class ListaAlumnos extends Component {
          buscra.style = "grid-column:"
      } */
 
+
+     componentDidMount(){
+        console.log("DID MOUNT");
+      
+        window.addEventListener("popstate",(e)=>{
+          console.log("HOLIIIIIIIIIIII") 
+          window.history.back()
+          window.history.forward()
+        
+
+          
+        })
+      
+    }
+
     componentWillUnmount() {
         //Borramos lo datis de tareas para que no acumule nada la varibale al seleccionar otras tareas
         this.props.tareasClase.splice(0, this.props.tareasClase.length)

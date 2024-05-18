@@ -55,7 +55,7 @@ class App extends React.Component {
     this.codigoClase = ""
     this.ranking = null
     this.estGrados = "none"
-    this.datosForm = ["","","","","","",""]
+    this.datosForm = ["","","","","","","",""]
     this.keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 
@@ -106,8 +106,11 @@ class App extends React.Component {
             console.log(this.state.user.emailVerified)
 
             var URL = { url: "http://localhost:3000/" }
-            this.state.user.sendEmailVerification(URL)
-              .then(p => { console.log("Enviando verificacion..") })
+            this.state.user.sendEmailVerification()
+              .then(p => { 
+                
+                console.log("Enviando verificacion..")
+                })
               .catch(t => { console.log("Error al enviar notificacion") })
 
 
@@ -164,7 +167,7 @@ class App extends React.Component {
   }
 
   AppEstado() {
-    if (this.state.user === null /*|| this.state.user.emailVerified === false*/) {
+    if (this.state.user === null ||  this.state.user.emailVerified === false) {
       return (
         <div className="App">
           <Router>
@@ -257,17 +260,18 @@ class App extends React.Component {
                   <ul className="footer__lista">
                     <li className="lista-footer-item">
                       <img className="lista-footer-item__imagen" src={iconCorreo}></img>
-                      skooldyprogram@gmail.com
+                       <p style={{color:"white",fontSize:"1.2em"}}>skooldyprogram@gmail.com</p>
                     </li>
 
                     <li className="lista-footer-item">
                       <img className="lista-footer-item__imagen" src={iconYoutube}></img>
-                      skooldy
+                      <p style={{color:"white",fontSize:"1.2em"}}>skooldy</p>
+
                     </li>
 
                     <li className="lista-footer-item">
                       <img className="lista-footer-item__imagen" src={iconFacebook}></img>
-                      skooldy
+                      <p style={{color:"white",fontSize:"1.2em"}}>skooldy</p>
                     </li>
                   </ul>
                 </div>
@@ -277,9 +281,15 @@ class App extends React.Component {
                     <h5 className="footer__titulo">Nosotros</h5>
 
                     <ul className="footer__lista">
-                      <li className="lista-footer-item">Quienes Somos</li>
-                      <li className="lista-footer-item">Mision</li>
-                      <li className="lista-footer-item">Vision</li>
+                      <li className="lista-footer-item">
+                        <p style={{color:"white",fontSize:"1.2em"}}>Quienes Somos</p>
+                      </li>
+                      <li className="lista-footer-item">
+                        <p style={{color:"white",fontSize:"1.2em"}}>Mision</p>
+                      </li>
+                      <li className="lista-footer-item">
+                        <p style={{color:"white",fontSize:"1.2em"}}>Vision</p>   
+                      </li>
                     </ul>
                   </div>
 
@@ -294,7 +304,9 @@ class App extends React.Component {
             <Route path="/Inicio">
 
 
-              <Link to="/Main"><img className="login__back" src={Back}></img></Link>
+              <Link to="/Main" onClick={()=>{
+                this.setState({pass:"",userName:""})
+              }}><img className="login__back" src={Back}></img></Link>
 
               <div className="login">
                 <form className="login-form">
@@ -317,51 +329,73 @@ class App extends React.Component {
             </Route>
 
             <Route path="/Formulario">
-              <Link to="/Main"><img className="login__back" src={Back}></img></Link>
+              <Link to="/Main" 
+              onClick={()=>{
+                this.setState({pass:"",userName:"",newUserInfo: []})
+                this.datosForm = ["","","","","","","",""]
+              }}><img className="login__back" src={Back}></img></Link>
 
-              <div className="login login--new-user">
-                <form className="login-form login-form--new-user" >
+              <div className="login">
+                <form className="login-form login-create-new" >
                   <h2 className="login-form-titulo">Nueva cuenta</h2>
                   <img className="login-form__logo" src={control}></img>
 
-                  <select id="OPTIONS" className="login-form-input" onChange={() => { this.SelectTipo(0, "OPTIONS") }} name="select">
+                  <select id="OPTIONS" className="login-form-input login-form-input--new-user" onChange={(e) => {
+                    this.SelectTipo(0, "OPTIONS") 
+                    e.target.disabled = true
+                    
+                    }} name="select">
                     <option value="" selected>Tipo de cuenta</option>
                     <option value="Alumno" >Alumno</option>
                     <option value="Docente">Docente</option>
                   </select>
 
 
-                  <input className="login-form-input" onChange={this.WrittingCreating} name="1" placeholder="Nombre..."></input>
-                  <input className="login-form-input" onChange={this.WrittingCreating} name="2" placeholder="Apellidos..."></input>
+                  <input className="login-form-input login-form-input--new-user" onChange={this.WrittingCreating} name="1" placeholder="Nombre..."></input>
+                  <input className="login-form-input login-form-input--new-user" onChange={this.WrittingCreating} name="2" placeholder="Apellidos..."></input>
 
                   <div className="inputs-linea">
                     {/*                     <input className="login-form-input login-form-input--cortos" onChange={this.WrittingCreating}  name="3" placeholder="Nacionalidad..."></input>
                   
                     <input className="login-form-input login-form-input--cortos" onChange={this.WrittingCreating} name="3" placeholder="Nivel de estudios..."></input>*/}
-                    <select style={{ display: this.estGrados }} id="GRADOS" className="login-form-input" onChange={() => { this.SelectTipo(3, "GRADOS") }} name="select">
-                      <option value="1" selected>1° grado</option>
-                      <option value="2" selected>2° grado</option>
-                      <option value="3" selected>3° grado</option>
-                      <option value="4" selected>4° grado</option>
-                      <option value="5" selected>5° grado</option>
-                      <option value="6" selected>6° grado</option>
+                    <select style={{ display: this.estGrados }} id="GRADOS" className="login-form-input login-form-input--new-user" onChange={() => { this.SelectTipo(3, "GRADOS") }} name="select">
+                      <option value="" selected>Selecciona un grado</option>
+                      <option value="1" >1° grado</option>
+                      <option value="2">2° grado</option>
+                      <option value="3">3° grado</option>
+                      <option value="4">4° grado</option>
+                      <option value="5">5° grado</option>
+                      <option value="6">6° grado</option>
                     </select>
 
 
                   </div>
                   <input className="login-form-input" onChange={this.WrittingCreating} name="4" type="hidden" value={this.state.userName}></input>
 
-                  <input className="login-form-input" onChange={this.WrittingCreating} name="4" type="number" placeholder="Edad..."></input>
-                  <input className="login-form-input" name="userName" type="email" placeholder="Correo electronico..." onChange={this.WrittingLogin}></input>
+                  <input className="login-form-input login-form-input--new-user" onChange={this.WrittingCreating} name="4" type="number" placeholder="Edad..."></input>
+                  <input className="login-form-input login-form-input--new-user" id="5" name="userName" type="email" placeholder="Correo electronico..." onChange={(e)=>{
+                    this.saveValueInput(e)
+                    this.WrittingLogin(e)
+                  }
+                    }></input>
 
                   <div className="inputs-linea">
-                    <input className="login-form-input login-form-input--cortos" type="password" name="pass" placeholder="Password..." onChange={this.WrittingLogin} id="5"></input>
-                    <input className="login-form-input login-form-input--cortos" type="password" name="pass" placeholder="Password..." onChange={this.WrittingLogin} id="6"></input>
+                    <input className="login-form-input login-form-input--cortos" type="password" name="pass" placeholder="Password..." onChange={(e)=>{
+                      this.saveValueInput(e)
+                      this.WrittingLogin(e)
+                    }} id="6"></input>
+                    <input className="login-form-input login-form-input--cortos" type="password" name="pass" placeholder="Password..." onChange={(e)=>{
+                      this.saveValueInput(e)
+                      this.WrittingLogin(e)
+                    }} id="7"></input>
                   </div>
 
                   <div className="login-form__buttons">
-                    <button className="buttons buttons--login" onClick={this.CreateUser}>Crear Cuenta</button>
-                    <Link  id='verifButton' style={{display:"none"}} to="/Verificando"></Link>
+                  <button className="buttons buttons--login" onClick={(e)=>{
+                    e.preventDefault()
+                    this.CreateUser()
+                  }}>Crear Cuenta</button>
+                    <Link id="verifButton"  to="/Verificando"/>
                   </div>
 
                 </form>
@@ -379,7 +413,8 @@ class App extends React.Component {
 
                 <h1 style={{ textAlign: "center", fontSize: "1.5em", color: "#CDCDCD" }}>
                   Se ha enviado una notificacion a tu correo
-                  electronico para validar que realmente eres tu :)
+                  electronico para validar que realmente eres tu. 
+                  Despues de validar actualiza la pagina
                 </h1>
                 <img className="fondo-figuras fondo-figuras--der" src={Derecha}></img>
                 <img className="fondo-figuras fondo-figuras--izq" src={Izq}></img>
@@ -454,14 +489,15 @@ class App extends React.Component {
     firebase.auth().signOut()
       .then(e => {
         console.log(`Usuario cerro session`)
-        this.setState({ tareasPendientes: [], tareasClase: [], clases: [] })
+        this.setState({ tareasPendientes: [], tareasClase: [], clases: [],pass:"",userName:"",datosUsuarioActual: null })
       })
       .catch(f => { console.log(`Error al cerrar sesion ${f.code}`) })
   }
 
+
   WrittingLogin = (e) => {
     this.setState({ [e.target.name]: e.target.value })
-    var isNameNumber = Number.isNaN(e.target.name)
+    /*var isNameNumber = Number.isNaN(e.target.name)
 
     if(isNameNumber){
       var pos= e.target.name
@@ -470,7 +506,13 @@ class App extends React.Component {
     else{
       var pos= e.target.id
       this.datosForm[pos] =  e.target.value
-    }   
+    }   */
+  }
+
+  saveValueInput = (e) => {
+
+    var pos= e.target.id
+    this.datosForm[pos] =  e.target.value
   }
 
   WrittingCreating = (obj) => {
@@ -486,40 +528,55 @@ class App extends React.Component {
 
   isAllDataComplete(){
 
+    console.log(`datosForm: ${this.datosForm}}`)
+
     var isDataComplete = true
+
+
     for (let i = 0; i < this.datosForm.length; i++) {
       if(this.datosForm[i] ==""){
-        isDataComplete = false
+        if(!(i==3 && this.datosForm[0] =="Docente")){
+          isDataComplete = false
+        }
         break
       }
       
     }
     return isDataComplete
   }
+  
+
+  passwordsMatched()
+  {
+    return this.datosForm[6] == this.datosForm[7]
+  }
 
   clickVirtualToVerificando(){
+    console.log("VERIFICANDO....")
 
     var bt = document.getElementById("verifButton")
-      console.log(`${bt}`)
+      console.log(`BOTON: ${bt}`)
       bt.click()
 
   }
 
-  CreateUser = (e) => {
-    e.preventDefault()
+  CreateUser = () => {
     const { newUserInfo } = this.state
 
     console.log("CreateUser"+this.datosForm)
 
     console.log("DATOS FORM: "+this.datosForm)
 
+    var isAllDataComplete = this.isAllDataComplete()
 
-    if(this.isAllDataComplete()){
-      
-      
-      console.log("TODOS LOS DATOS INSERTADOS")
-      firebase.auth().createUserWithEmailAndPassword(this.state.userName, this.state.pass)
-      .then(e => {
+    if(isAllDataComplete){
+
+      var passwordMatched = this.passwordsMatched()
+      if(passwordMatched){
+        
+        console.log("TODOS LOS DATOS INSERTADOS")
+        firebase.auth().createUserWithEmailAndPassword(this.state.userName, this.state.pass)
+        .then(e => {
 
         /*Una vez creado el usuario, creamos un ruta en la BD para este*/
         this.addUser = firebase.database().ref().child(`${newUserInfo[0]}`)
@@ -564,12 +621,19 @@ class App extends React.Component {
             })
           }
         }
-
         this.clickVirtualToVerificando()
+      }
+      )
+        .catch(f => { this.activarWindowMensaje("Datos no validos","Contraseña o correo invalidos")})
 
-      })
-      .catch(f => { this.activarWindowMensaje(f.code,f)})
+      }
+      else{
+        this.activarWindowMensaje("Datos incorrectos","Las contraseñas no coinciden")
 
+      }
+      
+      
+      
     }
     else{
       this.activarWindowMensaje("Datos incompletos","Inserta todos los datos para poder crear una cuenta")
@@ -601,7 +665,10 @@ class App extends React.Component {
     else{
       firebase.auth().signInWithEmailAndPassword(this.state.userName, this.state.pass)
       .then(e => {console.log(`Usuario logueado con exito: ${e.user.email}`)})
-      .catch(f => { this.activarWindowMensaje(f.code,f)})
+      .catch(f => { 
+        console.log(`F: ${f.code}`)
+        this.activarWindowMensaje("Error al iniciar sesion","Contraseña o usuario incorrecto")
+      })
     }
     
   }
